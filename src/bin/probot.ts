@@ -2,13 +2,12 @@ import { program } from "commander";
 import { isSupportedNodeVersion } from "../helpers/is-supported-node-version.js";
 import { loadPackageJson } from "../helpers/load-package-json.js";
 import { config as dotenvConfig } from "dotenv";
-import { resolve } from "path";
-/*import { dirname } from 'path';
-import { fileURLToPath } from 'url';*/
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 dotenvConfig();
 
-//const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkg = loadPackageJson(resolve(__dirname, "package.json"));
 
 if (!isSupportedNodeVersion()) {

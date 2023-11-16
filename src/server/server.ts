@@ -1,7 +1,8 @@
 import { Server as HttpServer } from "http";
 
 import express, { Router, type Application } from "express";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 import type { Logger } from "pino";
 import { createNodeMiddleware as createWebhooksMiddleware } from "@octokit/webhooks";
 
@@ -15,6 +16,8 @@ import type EventSource from "eventsource";
 
 // the default path as defined in @octokit/webhooks
 export const defaultWebhooksPath = "/api/github/webhooks";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 type State = {
   cwd?: string;
